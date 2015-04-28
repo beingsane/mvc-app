@@ -1,0 +1,33 @@
+<form class="form-register" action="/main/register" method="post">
+    <h3>Регистрация</h3>
+    
+    <input type="text" id="name" name="registration_form[name]" class="form-control" placeholder="Имя" required/>
+
+    <input type="email" id="email" name="registration_form[email]" class="form-control" placeholder="Email" required/>
+
+    <input type="password" id="password" name="registration_form[password]" class="form-control" placeholder="Пароль" required/>
+
+    <input type="password" id="password2" name="registration_form[password2]" class="form-control" placeholder="Повторите пароль" required/>
+    
+    <button class="btn btn-lg btn-primary btn-block" type="submit" style="margin-top: 10px">Зарегистрироваться</button>
+    
+    <?php if(count($errors) > 0) { ?>
+    <div class="alert-box error">
+        <?php
+            $messages = [
+                'NAME_EMPTY' => 'Поле "Имя" не указано',
+                'EMAIL_EMPTY' => 'Поле "Email" не указано',
+                'PASSWORD_EMPTY' => 'Поле "Пароль" не указано',
+                'INVALID_EMAIL' => 'Неправильное значение в поле "Email"',
+                'PASSWORDS_NOT_EQUAL' => 'Пароли не совпадают',
+                'EMAIL_ALREADY_EXISTS' => 'В системе уже существует пользователь с данным email',
+                'EMAIL_SEND_ERROR' => 'Произошла ошибка при отправке email',
+                'CREATE_USER_ERROR' => 'Произошла ошибка при создании пользователя',
+            ];
+            foreach($errors as $error) {
+                echo $messages[$error].'<br/>';
+            }
+        ?>
+    </div>
+    <?php } ?>
+</form>

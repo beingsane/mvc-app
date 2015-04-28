@@ -1,0 +1,16 @@
+<form class="form-signin" action="/main/login" method="post">
+    <h3>Вход</h3>
+
+    <input type="email" id="email" name="login_form[email]" class="form-control" placeholder="Email" required autofocus/>
+
+    <input type="password" id="password" name="login_form[password]" class="form-control" placeholder="Пароль" required/>
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Войти</button>
+    
+    <?php if(Application::$app->session->get('LOGIN_STATUS') == 'FAILED') { ?>
+        <div class="alert-box error">
+            Неправильный логин и/или пароль
+        </div>
+        <?php Application::$app->session->delete('LOGIN_STATUS'); ?>
+    <?php } ?>
+</form>

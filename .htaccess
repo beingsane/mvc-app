@@ -1,0 +1,11 @@
+RewriteEngine on
+
+RewriteBase /
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteCond $1 !^(index\.php|(.+)\.txt|modules\\(.+)\\js\\(.+)|modules\\(.+)\\css\\(.+)|favicon\.ico)
+RewriteRule ^(.*)$	index.php/$1 [L]
+
+AddDefaultCharset utf-8

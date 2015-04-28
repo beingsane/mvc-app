@@ -1,0 +1,29 @@
+<!-- Static navbar -->
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/">Главная</a></li>
+                <li><a href="/main/about">О компании</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <?php if(! Application::$app->user->isGuest()) { ?>
+                    <li><a href="/main/profile">Профиль</a></li>
+                    <li>
+                        <a href="javascript: return false" onclick="$(this).find('form').submit(); return false">
+                            Выход
+                            <div style="display: none">
+                                <form method="post" action="/main/logout">
+                                    <input type="hidden" name="logout" value="logout"/>
+                                </form>
+                            </div>
+                        </a>
+                    </li>
+                <?php } else { ?>
+                    <li><a href="/main/login_form">Вход</a></li>
+                    <li><a href="/main/registration_form">Регистрация</a></li>
+                <?php } ?>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div><!--/.container-fluid -->
+</nav>
